@@ -1,0 +1,5 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<link rel="stylesheet" type="text/css" href="${appRoot}/extjs/resources/css/ext-all.css"/>
+<script type="text/javascript" src="${appRoot}/extjs/ext-all.js"></script>
+<link rel="stylesheet" type="text/css" href="${appRoot}/extjs/ux/css/CheckHeader.css">
