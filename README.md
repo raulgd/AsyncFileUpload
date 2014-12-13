@@ -1,4 +1,6 @@
-This is a project sample on how to asynchronously upload and download files using the Servlet 3.1 API and the new non-blocking I/O support.
+## Async file uploading using the Servlet 3.1 API non-blocking I/O
+
+This is a sample project on how to asynchronously upload and download files using the Servlet 3.1 API and the new non-blocking I/O support.
 
 The files can be of any size and many can be uploaded at the same time without blocking the application.
 
