@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.MediaType;
 
 /**
- * This is the Async File Download WriteListener
+ * This is the Async File Download write listener
  *
  * @author Raul Guerrero
  */

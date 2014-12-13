@@ -58,16 +58,15 @@ public class FileUploadListener implements ReadListener
 	@Override
 	public void onDataAvailable() throws IOException
 	{
-		do
+		while (in.isReady())
 		{
 			int length = in.read(buffer);
 			tempFileOutputStream.write(buffer, 0, length);
 		}
-		while (in.isReady());
 	}
 
 	/**
-	 * When the request is done, saves the temp file to MongoDB, deletes the temp file and responds an "OK"
+	 * When the request is done, moves the temp file to the specified path and responds a "success" JSON
 	 *
 	 * @throws IOException
 	 */
@@ -104,7 +103,7 @@ public class FileUploadListener implements ReadListener
 	}
 
 	/**
-	 * If there was a connection error, or the request was canceled, deletes the temp file and throws a server error
+	 * If there was a connection error, or the request was canceled, deletes the temp file and throws a 500 server error
 	 *
 	 * @param t the exception message that caused the problem
 	 */

@@ -1,7 +1,6 @@
 package mx.jimi.asyncfileupload;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 import javax.servlet.AsyncContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 public class FileHandlerServlet extends HttpServlet
 {
 
+	//set the async task timeout to 1 hour in milliseconds
+	private static final long timeout = 3600000;
+
 	/**
 	 * Handles file downloads
 	 *
@@ -33,8 +35,7 @@ public class FileHandlerServlet extends HttpServlet
 					throws ServletException, IOException
 	{
 		AsyncContext context = request.startAsync();
-		//set the async task timeout to 1 hour
-		context.setTimeout(3600000);
+		context.setTimeout(timeout);
 		String path = request.getParameter("path");
 		response.getOutputStream().setWriteListener(new FileDownloadListener(context, request, response, path));
 	}
@@ -52,8 +53,7 @@ public class FileHandlerServlet extends HttpServlet
 					throws ServletException, IOException
 	{
 		AsyncContext context = request.startAsync();
-		//set the async task timeout to 1 hour
-		context.setTimeout(3600000);
+		context.setTimeout(timeout);
 		String path = request.getParameter("path");
 		String fileName = request.getHeader("X-File-Name");
 		request.getInputStream().setReadListener(new FileUploadListener(context, request, response, path, fileName));
